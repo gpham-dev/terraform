@@ -20,13 +20,14 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
 
-    - name: Set up Python
-      uses: actions/setup-python@v2
+    - name: OpenTofu # Prepares OpenTofu - downloading the alpha required
+      uses: opentofu/setup-opentofu@v1.0.3
       with:
-        python-version: '3.6.7'  # Specify the Python version if needed
+          tofu_version: 1.8.0-alpha1
 
-    - name: Install OpenTofu
-      run: pip install opentofu  # Replace with the correct installation command for OpenTofu
-
+    - name: Deploy infrastructure
+        # The code below imports the variables made available, then allows them to be used by Tofu by prefixing with TF_VAR_
+      run: |
+        tofu init 
     - name: Run Tofu Plan
       run: tofu plan  # Replace with the command to run Tofu Plan
