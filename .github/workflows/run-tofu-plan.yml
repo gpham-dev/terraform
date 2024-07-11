@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - 'terraform/main.tf'  # Adjust the file pattern to match the files you want to watch for changes
+      - 'terraform/main.tf'
   pull_request:
     branches:
       - main
@@ -14,13 +14,14 @@ on:
 
 jobs:
   run-tofu-plan:
-    runs-on: macos-10.15
+    runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+    - name: Checkout repository
+      uses: actions/checkout@v2
       
-      - name: Initialize Tofu
-        run: tofu init  
+    - name: Initialize Tofu
+      run: tofu init
       
-      - name: Run Tofu Plan
-        run: tofu plan 
+    - name: Run Tofu Plan
+      run: tofu plan
