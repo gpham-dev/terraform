@@ -38,3 +38,5 @@ jobs:
         aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
     - name: Run Tofu Plan
       run: tofu plan  # Replace with the command to run Tofu Plan
+    - name: Run Tofu Apply
+      run: tofu apply -auto-approve
