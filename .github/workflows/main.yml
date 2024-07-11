@@ -28,8 +28,11 @@ jobs:
 
     - name: Deploy infrastructure
       run: |
-        tofu init 
+        tofu init
         
+    - name: Refresh Tofu State
+      run: tofu refresh  
+      
     - name: Configure AWS Credentials
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
