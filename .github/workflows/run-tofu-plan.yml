@@ -3,26 +3,21 @@ name: Run Tofu Plan on File Changes
 on:
   push:
     paths:
-      - '**/*.tf'  # Adjust the file pattern to match the files you want to watch for changes
+      - 'terraform/main.tf'  # Adjust the file pattern to match the files you want to watch for changes
   pull_request:
     paths:
-      - '**/*.tf'
+      - 'terraform/main.tf'
 
 jobs:
   run-tofu-plan:
-    runs-on: ubuntu-latest
+    runs-on: macos-10.15
 
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
-
-    - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: '3.x'  # Specify the Python version if needed
-
-    - name: Install OpenTofu
-      run: pip install opentofu  # Replace with the correct installation command for OpenTofu
-
+      
+    - name: Initialize Tofu
+      run: tofu init  
+      
     - name: Run Tofu Plan
-      run: tofu plan  # Replace with the command to run Tofu Plan
+      run: tofu plan 
