@@ -2,9 +2,13 @@ name: Run Tofu Plan on File Changes
 
 on:
   push:
+    branches:
+      - main
     paths:
       - 'terraform/main.tf'  # Adjust the file pattern to match the files you want to watch for changes
   pull_request:
+    branches:
+      - main
     paths:
       - 'terraform/main.tf'
 
