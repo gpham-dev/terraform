@@ -6,7 +6,7 @@ resource "aws_s3_bucket" "example" {
   bucket = "my-tf-test-bucket-phamg"
 
   tags = {
-    Name        = "My bucket-test5"
+    Name        = "My bucket-test6"
     Environment = "Dev"
   }
 }
