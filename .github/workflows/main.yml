@@ -29,9 +29,6 @@ jobs:
     - name: Deploy infrastructure
       run: |
         tofu init
-        
-    - name: Refresh Tofu State
-      run: tofu refresh  
       
     - name: Configure AWS Credentials
       env:
